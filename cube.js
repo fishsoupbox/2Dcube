@@ -15,6 +15,39 @@
        0                       2
 */
 
+var randerer = {
+    FULL_RULE: 200,
+    MAX_ROTATION_ANGLE: Math.PI / 60,
+    init: function(){
+        this.container = document.querySelector("body");
+
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.rotationX = this.MAX_ROTATION_ANGLE;
+        this.rotationY = this.MAX_ROTATION_ANGLE;
+
+        this.canvas = this.container.querySelector("#canvas");
+        this.ctx = this.canvas.getContext("2d");
+        this.container.width = this.width;
+        this.container.height = this.height;
+
+        this.center = {x : this.width/2, y : this.height/2};
+
+        this.hufRule = this.FULL_RULE / 2;
+        this.points = [
+            { x: -this.hufRule, y: -this.hufRule, z: this.hufRule },
+            { x: -this.hufRule, y: this.hufRule, z: this.hufRule },
+            { x: this.hufRule, y: -this.hufRule, z: this.hufRule },
+            { x: this.hufRule, y: this.hufRule, z: this.hufRule },
+
+            { x: -this.hufRule, y: -this.hufRule, z: -this.hufRule },
+            { x: -this.hufRule, y: this.hufRule, z: -this.hufRule },
+            { x: this.hufRule, y: -this.hufRule, z: -this.hufRule },
+            { x: this.hufRule, y: this.hufRule, z: -this.hufRule }
+        ]
+    }
+}
+
 var MAX_ROTATION_ANGLE = Math.PI / 60;
 var rotationX = MAX_ROTATION_ANGLE;
 var rotationY = MAX_ROTATION_ANGLE;
